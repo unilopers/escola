@@ -13,4 +13,5 @@ O **Sistema Escolar** foi criado como parte de um trabalho acadêmico para demon
 ---
 
 👩‍💻 Equipe
-- **Maria Eduarda De Sena Ruiz**  
+- **Maria Eduarda De Sena Ruiz**
+- **Matheus Haverroth Tarocco**
