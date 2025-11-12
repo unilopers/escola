@@ -13,9 +13,9 @@ O **Sistema Escolar** foi criado como parte de um trabalho acadêmico para demon
 ---
 
 👩‍💻 Equipe
+- **Eduardo Luis Alonso**
 - **Juliana Furlan Costa**
 - **Maria Eduarda De Sena Ruiz**
 - **Matheus Haverroth Tarocco**
-- **Eduardo Luis Alonso**
 - **Luiz Felipe Bonilha Carmona**
 - **Tomio Ian Nishijima**
