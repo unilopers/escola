@@ -18,3 +18,4 @@ O **Sistema Escolar** foi criado como parte de um trabalho acadêmico para demon
 - **Matheus Haverroth Tarocco**
 - **Eduardo Luis Alonso**
 - **Luiz Felipe Bonilha Carmona**
+- **Tomio Ian Nishijima**
