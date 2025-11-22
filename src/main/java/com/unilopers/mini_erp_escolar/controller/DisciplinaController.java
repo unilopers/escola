@@ -41,4 +41,16 @@ public class DisciplinaController {
 
         return new DisciplinaResponseDTO(d.getId(), d.getNome());
     }
+    // PUT - ATUALIZAR
+    @PutMapping("/{id}")
+    public DisciplinaResponseDTO atualizar(@PathVariable Long id, @RequestBody DisciplinaRequestDTO dto) {
+        Disciplina d = disciplinaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Disciplina não encontrada"));
+
+        d.setNome(dto.nome());
+        Disciplina atualizado = disciplinaRepository.save(d);
+
+        return new DisciplinaResponseDTO(atualizado.getId(), atualizado.getNome());
+    }
+
 
