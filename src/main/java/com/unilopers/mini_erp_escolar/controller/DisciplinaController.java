@@ -23,3 +23,13 @@ public class DisciplinaController {
         Disciplina salva = disciplinaRepository.save(disciplina);
         return new DisciplinaResponseDTO(salva.getId(), salva.getNome());
     }
+
+    // GET - LISTA
+    @GetMapping
+    public List<DisciplinaResponseDTO> listar() {
+        return disciplinaRepository.findAll()
+                .stream()
+                .map(d -> new DisciplinaResponseDTO(d.getId(), d.getNome()))
+                .toList();
+    }
+
