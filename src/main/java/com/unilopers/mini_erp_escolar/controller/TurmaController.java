@@ -59,5 +59,12 @@ public class TurmaController {
         return ResponseEntity.ok(toResponse(turma));
     }
 
+    // DELETE
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        turmaRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
