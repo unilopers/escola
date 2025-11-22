@@ -53,4 +53,11 @@ public class DisciplinaController {
         return new DisciplinaResponseDTO(atualizado.getId(), atualizado.getNome());
     }
 
+    // DELETE
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        disciplinaRepository.deleteById(id);
+    }
+
+
 
