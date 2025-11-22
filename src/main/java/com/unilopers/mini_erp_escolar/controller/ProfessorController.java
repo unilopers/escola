@@ -61,6 +61,28 @@ public class ProfessorController {
         return  dto;
     }
 
+    //UPDATE
+    @PutMapping("/{id}")
+    public ProfessorResponseDTO atualizar(
+            @PathVariable Long id,
+            @RequestBody ProfessorRequestDTO dto) {
+
+        Professor professor = professorRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
+
+        professor.setNome(dto.getNome());
+        professor.setEmail(dto.getEmail());
+
+        Professor atualizado = professorRepository.save(professor);
+
+        ProfessorResponseDTO resp = new ProfessorResponseDTO();
+        resp.setId(atualizado.getId());
+        resp.setNome(atualizado.getNome());
+        resp.setEmail(atualizado.getEmail());
+
+        return resp;
+    }
+
 
 
 
