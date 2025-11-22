@@ -83,6 +83,14 @@ public class ProfessorController {
         return resp;
     }
 
+    //DELETE
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        if (!professorRepository.existsById(id)) {
+            throw new RuntimeException("Professor não encontrado");
+        }
+        professorRepository.deleteById(id);
+    }
 
 
 
