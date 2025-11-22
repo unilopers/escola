@@ -33,3 +33,12 @@ public class DisciplinaController {
                 .toList();
     }
 
+    // GET - BUSCA POR ID
+    @GetMapping("/{id}")
+    public DisciplinaResponseDTO buscarPorId(@PathVariable Long id) {
+        Disciplina d = disciplinaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Disciplina não encontrada"));
+
+        return new DisciplinaResponseDTO(d.getId(), d.getNome());
+    }
+
