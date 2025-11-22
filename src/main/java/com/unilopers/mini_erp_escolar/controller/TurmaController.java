@@ -59,6 +59,16 @@ public class TurmaController {
         return ResponseEntity.ok(toResponse(turma));
     }
 
+    //GET BY PROFESSOR
+    @GetMapping("/professor/{professorId}")
+    public List<TurmaResponseDTO> listarPorProfessor(@PathVariable Long professorId) {
+        return turmaRepository.findAll().stream()
+                .filter(t -> t.getProfessor().getId().equals(professorId))
+                .map(this::toResponse)
+                .toList();
+    }
+
+
     //PUT
     @PutMapping("/{id}")
     public TurmaResponseDTO update(@PathVariable Long id, @RequestBody TurmaRequestDTO dto) {
