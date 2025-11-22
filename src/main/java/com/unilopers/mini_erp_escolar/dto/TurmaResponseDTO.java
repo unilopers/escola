@@ -4,6 +4,15 @@ public class TurmaResponseDTO {
     private Long id;
     private String nome;
     private String professorNome;
+    private Long professorId;
+
+    public Long getProfessorId() {
+        return professorId;
+    }
+
+    public void setProfessorId(Long professorId) {
+        this.professorId = professorId;
+    }
 
     public Long getId() {
         return id;
