@@ -26,4 +26,5 @@ public class Presenca {
 
     @Column(nullable = false)
     private LocalDateTime dataRegistro = LocalDateTime.now();
+    //tentativa2 de commit
 }
