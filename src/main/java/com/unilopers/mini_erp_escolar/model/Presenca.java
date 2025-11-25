@@ -24,5 +24,32 @@ public class Presenca {
     @Column(nullable = false)
     private Boolean presente;
 
-    // construtores, getters e setters
+    public Presenca() {}
+
+    public Presenca(Aluno aluno, Aula aula, Boolean presente) {
+        this.aluno = aluno;
+        this.aula = aula;
+        this.presente = presente;
+    }
+    public Long getId() {
+        return id;
+    }
+    public Aluno getAluno() {
+        return aluno;
+    }
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+    public Aula getAula() {
+        return aula;
+    }
+    public void setAula(Aula aula) {
+        this.aula = aula;
+    }
+    public Boolean getPresente() {
+        return presente;
+    }
+    public void setPresente(Boolean presente) {
+        this.presente = presente;
+    }
 }
