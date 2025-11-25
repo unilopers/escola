@@ -60,4 +60,26 @@ public class NotaService {
         }
         notaRepository.deleteById(id);
     }
+
+    @Transactional
+    public Nota atualizar(Long id, NotaRequestDTO dto) {
+        Nota notaExistente = buscarPorId(id);
+
+        notaExistente.setNota(dto.nota());
+        
+        if (!notaExistente.getAluno().getId().equals(dto.idAluno())) {
+            notaExistente.setAluno(buscarAluno(dto.idAluno()));
+        }
+        if (!notaExistente.getDisciplina().getId().equals(dto.idDisciplina())) {
+            notaExistente.setDisciplina(buscarDisciplina(dto.idDisciplina()));
+        }
+        
+        return notaRepository.save(notaExistente);
+    }
+    
+    public BigDecimal calcularMediaGeralAluno(Long idAluno) {
+        BigDecimal media = notaRepository.calcularMediaGeralPorAluno(idAluno);
+        
+        return media != null ? media : BigDecimal.ZERO;
+    }
 }
