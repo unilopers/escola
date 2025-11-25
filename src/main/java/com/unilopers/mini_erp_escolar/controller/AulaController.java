@@ -71,6 +71,7 @@ public class AulaController {
                 a.getDisciplina().getId()
         );
     }
+
     @PutMapping("/{id}")
     public AulaResponseDTO atualizar(@PathVariable Long id, @RequestBody AulaRequestDTO dto) {
 
@@ -94,5 +95,10 @@ public class AulaController {
                 atualizado.getTurma().getId(),
                 atualizado.getDisciplina().getId()
         );
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletar(@PathVariable Long id) {
+        aulaRepository.deleteById(id);
     }
 }
