@@ -71,4 +71,28 @@ public class AulaController {
                 a.getDisciplina().getId()
         );
     }
+    @PutMapping("/{id}")
+    public AulaResponseDTO atualizar(@PathVariable Long id, @RequestBody AulaRequestDTO dto) {
+
+        Aula a = aulaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Aula não encontrada"));
+
+        Turma turma = turmaRepository.findById(dto.idTurma())
+                .orElseThrow(() -> new RuntimeException("Turma não encontrada"));
+
+        Disciplina disciplina = disciplinaRepository.findById(dto.idDisciplina())
+                .orElseThrow(() -> new RuntimeException("Disciplina não encontrada"));
+
+        a.setDataAula(dto.dataAula());
+        a.setTurma(turma);
+
+        Aula atualizado = aulaRepository.save(a);
+
+        return new AulaResponseDTO(
+                atualizado.getId(),
+                atualizado.getDataAula(),
+                atualizado.getTurma().getId(),
+                atualizado.getDisciplina().getId()
+        );
+    }
 }
