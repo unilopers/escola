@@ -10,23 +10,23 @@ public class Aula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDate dataDaAula;
+    private LocalDate dataAula;
 
     public Aula() {}
 
-    public Aula(LocalDate dataDaAula) {
-        this.dataDaAula = dataDaAula;
+    public Aula(LocalDate dataAula) {
+        this.dataAula = dataAula;
     }
 
     public Long getId() {
         return id;
     }
 
-    public LocalDate getDataDaAula() {
-        return dataDaAula;
+    public LocalDate getDataAula() {
+        return dataAula;
     }
 
-    public void setDataDaAula(LocalDate dataDaAula) {
-        this.dataDaAula = dataDaAula;
+    public void setDataAula(LocalDate dataAula) {
+        this.dataAula = dataAula;
     }
 }
