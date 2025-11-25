@@ -20,4 +20,50 @@ public class AulaController {
     @Autowired
     private DisciplinaRepository disciplinaRepository;
 
+    @PostMapping
+    public AulaResponseDTO criar(@RequestBody AulaRequestDTO dto) {
+
+        Turma turma = turmaRepository.findById(dto.idTurma())
+                .orElseThrow(() -> new RuntimeException("Turma não encontrada"));
+
+        Disciplina disciplina = disciplinaRepository.findById(dto.idDisciplina())
+                .orElseThrow(() -> new RuntimeException("Disciplina não encontrada"));
+
+        Aula aula = new Aula(dto.dataAula(), turma, disciplina);
+        Aula salva = aulaRepository.save(aula);
+
+        return new AulaResponseDTO(
+                salva.getId(),
+                salva.getDataAula(),
+                salva.getTurma().getId(),
+                salva.getDisciplina().getId()
+        );
+
+        @GetMapping
+        public List<AulaResponseDTO> listar() {
+            return aulaRepository.findAll().stream()
+                    .map(a -> new AulaResponseDTO(
+                            a.getId(),
+                            a.getDataAula(),
+                            a.getTurma().getId(),
+                            a.getDisciplina().getId()
+                    ))
+                    .toList();
+        }
+
+        @GetMapping("/{id}")
+        public AulaResponseDTO buscar(@PathVariable Long id) {
+            Aula a = aulaRepository.findById(id)
+                    .orElseThrow(() -> new RuntimeException("Aula não encontrada"));
+
+            return new AulaResponseDTO(
+                    a.getId(),
+                    a.getDataAula(),
+                    a.getTurma().getId(),
+                    a.getDisciplina().getId()
+            );
+        }
+
+    }
+}
 }
