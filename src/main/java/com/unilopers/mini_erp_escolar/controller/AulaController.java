@@ -85,7 +85,7 @@ public class AulaController {
 
         a.setDataAula(dto.dataAula());
         a.setTurma(turma);
-
+        a.setDisciplina(disciplina);
         Aula atualizado = aulaRepository.save(a);
 
         return new AulaResponseDTO(
