@@ -50,7 +50,7 @@ public class NotaService {
     
     public Nota buscarPorId(Long id) {
         return notaRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Nota não encontrada com ID: " + id))
+                .orElseThrow(() -> new EntityNotFoundException("Nota não encontrada com ID: " + id)); //FALTOU O PONTO E VÍRGULA
     }
   
     @Transactional
