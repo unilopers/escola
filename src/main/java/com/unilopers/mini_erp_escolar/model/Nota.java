@@ -5,24 +5,24 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data; 
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data 
+@Data
 @NoArgsConstructor
 @Entity
-@Table(name = "notas") 
+@Table(name = "notas")
 public class Nota {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idNota; 
+    private Long idNota;
 
     @Column(nullable = false, precision = 5, scale = 2)
     @NotNull(message = "A nota é obrigatória.")
     @DecimalMin(value = "0.00", message = "A nota mínima deve ser 0.00.")
     @DecimalMax(value = "10.00", message = "A nota máxima deve ser 10.00.")
-    private BigDecimal nota; 
+    private BigDecimal nota;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_aluno", nullable = false)

@@ -2,12 +2,16 @@ package com.unilopers.mini_erp_escolar.service;
 
 import com.unilopers.mini_erp_escolar.dto.MatriculaRequestDTO;
 import com.unilopers.mini_erp_escolar.dto.MatriculaResponseDTO;
+import com.unilopers.mini_erp_escolar.model.Aluno;
 import com.unilopers.mini_erp_escolar.model.Matricula;
+import com.unilopers.mini_erp_escolar.model.Turma;
 import com.unilopers.mini_erp_escolar.repository.AlunoRepository;
 import com.unilopers.mini_erp_escolar.repository.MatriculaRepository;
 import com.unilopers.mini_erp_escolar.repository.TurmaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor

@@ -1,9 +1,9 @@
 package com.unilopers.mini_erp_escolar.controller;
 
-import com.api.escola.dto.DisciplinaRequestDTO;
-import com.api.escola.dto.DisciplinaResponseDTO;
-import com.api.escola.model.Disciplina;
-import com.api.escola.repository.DisciplinaRepository;
+import com.unilopers.mini_erp_escolar.dto.DisciplinaRequestDTO;
+import com.unilopers.mini_erp_escolar.dto.DisciplinaResponseDTO;
+import com.unilopers.mini_erp_escolar.model.Disciplina;
+import com.unilopers.mini_erp_escolar.repository.DisciplinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -58,6 +58,7 @@ public class DisciplinaController {
     public void deletar(@PathVariable Long id) {
         disciplinaRepository.deleteById(id);
     }
+}
 
 
 
