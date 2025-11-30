@@ -13,7 +13,7 @@ public record NotaRequestDTO(
     
     @NotNull(message = "A nota é obrigatória.")
     @DecimalMin(value = "0.00", message = "A nota mínima deve ser 0.00.")
-    @DecimalMax(value = "100.00", message = "A nota máxima deve ser 10.00.")//ESTAVA 100.00 AO INVÉS DE 10.00
+    @DecimalMax(value = "10.00", message = "A nota máxima deve ser 10.00.")
     BigDecimal nota
 ) {
 }
