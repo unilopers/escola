@@ -6,6 +6,7 @@ import com.unilopers.mini_erp_escolar.model.Professor;
 import com.unilopers.mini_erp_escolar.model.Turma;
 import com.unilopers.mini_erp_escolar.repository.ProfessorRepository;
 import com.unilopers.mini_erp_escolar.repository.TurmaRepository;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,7 @@ public class TurmaController {
 
     // CREATE
     @PostMapping
-    public ResponseEntity<TurmaResponseDTO> create(@RequestBody TurmaRequestDTO dto) {
+    public ResponseEntity<TurmaResponseDTO> create(@RequestBody @Valid TurmaRequestDTO dto) {
 
         Professor professor = professorRepository.findById(dto.getProfessorId())
                 .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
@@ -68,10 +69,9 @@ public class TurmaController {
                 .toList();
     }
 
-
     //PUT
     @PutMapping("/{id}")
-    public TurmaResponseDTO update(@PathVariable Long id, @RequestBody TurmaRequestDTO dto) {
+    public TurmaResponseDTO update(@PathVariable Long id, @RequestBody @Valid TurmaRequestDTO dto) {
 
         Turma turma = turmaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Turma não encontrada"));
@@ -86,7 +86,6 @@ public class TurmaController {
 
         return toResponse(turma);
     }
-
 
     //DELETE
     @DeleteMapping("/{id}")
@@ -107,8 +106,4 @@ public class TurmaController {
         dto.setProfessorNome(turma.getProfessor().getNome());
         return dto;
     }
-
-
-
-
 }

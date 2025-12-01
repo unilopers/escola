@@ -4,6 +4,7 @@ import com.unilopers.mini_erp_escolar.dto.ProfessorRequestDTO;
 import com.unilopers.mini_erp_escolar.dto.ProfessorResponseDTO;
 import com.unilopers.mini_erp_escolar.model.Professor;
 import com.unilopers.mini_erp_escolar.repository.ProfessorRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class ProfessorController {
     private ProfessorRepository professorRepository;
 
     @PostMapping
-    public ProfessorResponseDTO criar(@RequestBody ProfessorRequestDTO dto) {
+    public ProfessorResponseDTO criar(@RequestBody @Valid ProfessorRequestDTO dto) {
         Professor professor = new Professor();
         professor.setNome(dto.getNome());
         professor.setEmail(dto.getEmail());
@@ -32,13 +33,12 @@ public class ProfessorController {
         return response;
     }
 
-    //GET (lista todos)
     @GetMapping
     public List<ProfessorResponseDTO> listar() {
         return professorRepository.findAll().stream()
                 .map(prof -> {
                     ProfessorResponseDTO dto = new ProfessorResponseDTO();
-                    dto.setId((prof.getId()));
+                    dto.setId(prof.getId());
                     dto.setNome(prof.getNome());
                     dto.setEmail(prof.getEmail());
                     return dto;
@@ -46,9 +46,8 @@ public class ProfessorController {
                 .toList();
     }
 
-    //GET (por ID)
     @GetMapping("/{id}")
-    public  ProfessorResponseDTO buscarPorId(@PathVariable Long id) {
+    public ProfessorResponseDTO buscarPorId(@PathVariable Long id) {
         Professor professor = professorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
 
@@ -57,14 +56,13 @@ public class ProfessorController {
         dto.setNome(professor.getNome());
         dto.setEmail(professor.getEmail());
 
-        return  dto;
+        return dto;
     }
 
-    //UPDATE
     @PutMapping("/{id}")
     public ProfessorResponseDTO atualizar(
             @PathVariable Long id,
-            @RequestBody ProfessorRequestDTO dto) {
+            @RequestBody @Valid ProfessorRequestDTO dto) {
 
         Professor professor = professorRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Professor não encontrado"));
@@ -82,7 +80,6 @@ public class ProfessorController {
         return resp;
     }
 
-    //DELETE
     @DeleteMapping("/{id}")
     public void deletar(@PathVariable Long id) {
         if (!professorRepository.existsById(id)) {
@@ -90,7 +87,4 @@ public class ProfessorController {
         }
         professorRepository.deleteById(id);
     }
-
-
-
 }

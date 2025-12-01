@@ -6,6 +6,7 @@ import com.unilopers.mini_erp_escolar.model.Disciplina;
 import com.unilopers.mini_erp_escolar.repository.DisciplinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class DisciplinaController {
 
     // CREATE
     @PostMapping
-    public DisciplinaResponseDTO criar(@RequestBody DisciplinaRequestDTO dto) {
+    public DisciplinaResponseDTO criar(@Valid @RequestBody DisciplinaRequestDTO dto) {
         Disciplina disciplina = new Disciplina(dto.nome());
         Disciplina salva = disciplinaRepository.save(disciplina);
         return new DisciplinaResponseDTO(salva.getId(), salva.getNome());
@@ -41,9 +42,10 @@ public class DisciplinaController {
 
         return new DisciplinaResponseDTO(d.getId(), d.getNome());
     }
+
     // PUT - ATUALIZAR
     @PutMapping("/{id}")
-    public DisciplinaResponseDTO atualizar(@PathVariable Long id, @RequestBody DisciplinaRequestDTO dto) {
+    public DisciplinaResponseDTO atualizar(@PathVariable Long id, @Valid @RequestBody DisciplinaRequestDTO dto) {
         Disciplina d = disciplinaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Disciplina não encontrada"));
 
@@ -59,6 +61,3 @@ public class DisciplinaController {
         disciplinaRepository.deleteById(id);
     }
 }
-
-
-

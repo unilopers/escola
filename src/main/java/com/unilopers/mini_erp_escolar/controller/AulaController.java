@@ -11,6 +11,7 @@ import com.unilopers.mini_erp_escolar.repository.DisciplinaRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class AulaController {
     private DisciplinaRepository disciplinaRepository;
 
     @PostMapping
-    public AulaResponseDTO criar(@RequestBody AulaRequestDTO dto) {
+    public AulaResponseDTO criar(@Valid @RequestBody AulaRequestDTO dto) {
 
         Turma turma = turmaRepository.findById(dto.idTurma())
                 .orElseThrow(() -> new RuntimeException("Turma não encontrada"));
@@ -73,7 +74,7 @@ public class AulaController {
     }
 
     @PutMapping("/{id}")
-    public AulaResponseDTO atualizar(@PathVariable Long id, @RequestBody AulaRequestDTO dto) {
+    public AulaResponseDTO atualizar(@PathVariable Long id, @Valid @RequestBody AulaRequestDTO dto) {
 
         Aula a = aulaRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Aula não encontrada"));

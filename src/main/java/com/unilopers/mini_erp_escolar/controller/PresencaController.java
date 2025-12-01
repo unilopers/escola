@@ -3,7 +3,7 @@ package com.unilopers.mini_erp_escolar.controller;
 import com.unilopers.mini_erp_escolar.dto.PresencaRequestDTO;
 import com.unilopers.mini_erp_escolar.dto.PresencaResponseDTO;
 import com.unilopers.mini_erp_escolar.service.PresencaService;
-
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class PresencaController {
     }
 
     @PostMapping
-    public PresencaResponseDTO registrar(@RequestBody PresencaRequestDTO dto) {
+    public PresencaResponseDTO registrar(@RequestBody @Valid PresencaRequestDTO dto) {
         return presencaService.registrar(dto);
     }
 

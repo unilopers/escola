@@ -6,6 +6,7 @@ import com.unilopers.mini_erp_escolar.service.MatriculaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class MatriculaController {
     private final MatriculaService matriculaService;
 
     @PostMapping
-    public ResponseEntity<MatriculaResponseDTO> criar(@RequestBody MatriculaRequestDTO dto) {
+    public ResponseEntity<MatriculaResponseDTO> criar(@Valid @RequestBody MatriculaRequestDTO dto) {
         return ResponseEntity.ok(matriculaService.criar(dto));
     }
 
@@ -32,6 +33,3 @@ public class MatriculaController {
         return ResponseEntity.noContent().build();
     }
 }
-
-
-
