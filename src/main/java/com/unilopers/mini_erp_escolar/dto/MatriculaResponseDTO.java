@@ -4,6 +4,6 @@ public record MatriculaResponseDTO(
         Long id,
         Long alunoId,
         Long turmaId,
-        String alunoNome,
-        String turmaNome
+        String nomeAluno,
+        String nomeTurma
 ) {}
